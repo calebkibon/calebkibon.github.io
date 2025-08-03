@@ -1,3 +1,8 @@
+/* Universal Box Model Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* General Body Styles */
 body {
     font-family: 'Arial', sans-serif; /* You can change this to a Google Font like 'Montserrat' or 'Open Sans' */
@@ -56,7 +61,7 @@ a:hover {
     background-color: #e9ecef; /* Slightly different background for alternating sections */
 }
 
-/* Navbar */
+/* --- Navbar --- */
 .navbar {
     background-color: #343a40; /* Dark background for navbar */
     color: #fff;
@@ -105,7 +110,7 @@ a:hover {
     text-decoration: none;
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
 .hero-section {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://kipronopato.github.io/Profile/images/hero-bg.jpg') no-repeat center center/cover;
     color: #fff;
@@ -182,17 +187,19 @@ a:hover {
     }
 }
 
-/* About Section */
+/* --- About Section --- */
 .about-content {
     font-size: 1.1em;
     line-height: 1.8;
     text-align: justify;
+    max-width: 800px; /* Added max-width for better readability */
+    margin: 0 auto;
 }
 .about-content p {
     margin-bottom: 15px;
 }
 
-/* Skills Section */
+/* --- Skills Section --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -238,10 +245,12 @@ a:hover {
     color: #007bff;
 }
 
-/* Experience & Education Sections (Timeline) */
+/* --- Experience & Education Sections (Timeline) --- */
 .timeline {
     position: relative;
     padding: 20px 0;
+    max-width: 900px; /* Added max-width for consistency */
+    margin: 0 auto;
 }
 
 .timeline::before {
@@ -282,6 +291,12 @@ a:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     width: 45%; /* Adjust width for content */
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+}
+
+.timeline-content:hover { /* Added hover effect */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* For alternating sides on larger screens */
@@ -317,7 +332,7 @@ a:hover {
     margin-bottom: 8px;
 }
 
-/* Projects Section */
+/* --- Projects Section --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -331,6 +346,9 @@ a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Added flex for consistent button alignment */
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-card:hover {
@@ -353,62 +371,46 @@ a:hover {
 .project-card p {
     font-size: 1em;
     margin-bottom: 20px;
+    flex-grow: 1; /* Allows text to grow and push links to bottom */
+}
+
+.project-card .project-links {
+    margin-top: auto; /* Pushes links to the bottom */
+    display: flex; /* Ensure links are flexible */
+    gap: 15px; /* Space between links */
+    flex-wrap: wrap; /* Allow links to wrap */
 }
 
 .project-card .project-links a {
-    display: inline-block;
-    margin-right: 15px;
+    display: inline-flex; /* Use flex for icon and text alignment */
+    align-items: center;
     color: #007bff;
     font-weight: bold;
+    font-size: 0.95em; /* Slightly larger font */
 }
 
 .project-card .project-links a i {
     margin-right: 5px;
 }
-
-/* Referees Section */
-.referees-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+.project-card .project-links a:hover {
+    color: #0056b3;
+    text-decoration: none;
 }
 
-.referee-card {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    text-align: center;
-}
 
-.referee-card h3 {
-    margin-top: 0;
-    color: #343a40;
-}
-
-.referee-card p {
-    margin-bottom: 10px;
-}
-
-.referee-note {
-    text-align: center;
-    margin-top: 30px;
-    font-style: italic;
-    color: #6c757d;
-}
-
-/* Contact Section */
+/* --- Contact Section --- */
 .contact-intro {
     text-align: center;
     font-size: 1.1em;
     margin-bottom: 40px;
+    max-width: 700px; /* Added max-width for better readability */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-info-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid; /* Changed to grid for better control on larger screens */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 30px;
 }
@@ -419,8 +421,16 @@ a:hover {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    flex: 1; /* Allow items to grow */
-    min-width: 250px; /* Minimum width for contact item */
+    display: flex; /* Added flex for vertical centering */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+}
+
+.contact-item:hover { /* Added hover effect */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
 .contact-item .icon {
@@ -436,15 +446,22 @@ a:hover {
 .contact-item p a {
     color: #333;
     word-break: break-all; /* For long email addresses */
+    transition: color 0.3s ease; /* Added transition */
+}
+.contact-item p a:hover { /* Added hover effect */
+    color: #007bff;
+    text-decoration: underline;
 }
 
-/* Footer */
+
+/* --- Footer --- */
 .footer {
     background-color: #343a40;
     color: #fff;
     text-align: center;
     padding: 30px 0;
     font-size: 0.9em;
+    margin-top: 60px; /* Added top margin for separation */
 }
 
 .footer .container {
@@ -466,9 +483,10 @@ a:hover {
 
 .footer-social a:hover {
     color: #007bff;
+    text-decoration: none; /* Remove underline on hover for social icons */
 }
 
-/* Responsive Adjustments */
+/* --- Responsive Adjustments --- */
 @media (max-width: 992px) {
     .navbar .nav-links {
         display: none; /* Hide nav links on smaller screens for simplicity */
@@ -477,6 +495,9 @@ a:hover {
         justify-content: center; /* Center logo if nav links are hidden */
     }
 
+    .hero-section {
+        padding: 120px 0 80px; /* Adjusted padding for smaller screens */
+    }
     .hero-section h1 {
         font-size: 2.8em;
     }
@@ -491,10 +512,6 @@ a:hover {
 
     .section-padding {
         padding: 60px 0;
-    }
-
-    .skills-grid, .projects-grid, .referees-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     /* Timeline adjustments for smaller screens */
@@ -524,7 +541,7 @@ a:hover {
 
 @media (max-width: 768px) {
     .hero-section {
-        padding: 120px 0 80px;
+        padding: 100px 0 60px; /* Further adjusted padding */
     }
     .hero-section .profile-pic {
         width: 150px;
@@ -536,14 +553,20 @@ a:hover {
     .hero-section .tagline {
         font-size: 1em;
     }
+    .btn-scroll-down {
+        font-size: 2em; /* Smaller scroll down button */
+    }
 
+
+    /* Grids stack on smaller screens */
+    .skills-grid,
+    .projects-grid,
     .contact-info-grid {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
     }
     .contact-item {
         width: 90%;
-        max-width: 400px;
+        max-width: 400px; /* Constrain width for single column */
     }
 }
 
@@ -561,7 +584,7 @@ a:hover {
     h2 {
         font-size: 1.8em;
     }
-    .skill-category, .project-card, .referee-card, .contact-item {
+    .skill-category, .project-card, .contact-item, .timeline-content {
         padding: 20px;
     }
 }
